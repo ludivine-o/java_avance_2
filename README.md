@@ -1,2 +1,2 @@
-# java_avance_2
+# testspring
 Utilisation de Spring Boot, Thymeleaf. 
