@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
@@ -7,11 +8,24 @@
 <body>
 <h1>Welcome</h1>
 <h2 th:utext="${message}">..!..</h2>
-<ul>
 
-    <li th:each = "car:${cars}" th:utext="${car.id},${car.brand},${car.model},${car.color}"> ... </li>
 
-</ul>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Brand</th>
+            <th>Color</th>
+        </tr>
+        <tr th:each ="car : ${cars}">
+            <td><a th:href="@{/{id}(id=${car.id})}" th:utext="${car.id}"></a></td>
+            <td th:utext="${car.model}">...</td>
+            <td th:utext="${car.brand}">...</td>
+            <td th:utext="${car.color}">...</td>
+        </tr>
+    </table>
+</div>
 
 </body>
 
