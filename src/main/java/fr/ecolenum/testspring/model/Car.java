@@ -7,6 +7,16 @@ public class Car {
     private String color;
     private int id;
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
     public Car(int id, String brand, String model, String color) {
         this.id = id;
         this.brand = brand;
@@ -17,6 +27,8 @@ public class Car {
     public int getId() {
         return id;
     }
+
+
 
     public void setId(int id) {
         this.id = id;
