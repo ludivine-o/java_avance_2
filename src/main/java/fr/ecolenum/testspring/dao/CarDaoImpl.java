@@ -35,11 +35,13 @@ public class CarDaoImpl implements CarDao {
 
     @Override
     public void update(Car modifiedcar, int id) {
-        Car car = cars.get(id);
+        cars.put(id, modifiedcar);
+/*        Car car = cars.get(id);
         car.setId(modifiedcar.getId());
         car.setBrand(modifiedcar.getBrand());
         car.setColor(modifiedcar.getColor());
-        car.setModel(modifiedcar.getModel());
+        car.setModel(modifiedcar.getModel());*/
+        //penser à sauvegarder la donnée modifiée.
     }
 
     @Override
