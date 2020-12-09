@@ -1,2 +1,2 @@
 # testspring
-Utilisation de Spring Boot, Thymeleaf. 
+Utilisation de Spring Boot, pour un service de location de voitures.
