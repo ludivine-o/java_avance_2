@@ -22,7 +22,7 @@ class JavaAvance2ApplicationTests {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-	@Test
+	/*@Test
 	public void shouldFindAllCars() {
 		String body = restTemplate.getForObject("/cars", String.class);
 		assertEquals("[{\"id\":0,\"brand\":\"Bentley\",\"model\":\"Black\",\"color\":\"Continental GT\"},{\"id\":2,\"brand\":\"OldsMobile\",\"model\":\"Black\",\"color\":\"Rocket88\"},{\"id\":3,\"brand\":\"BMW\",\"model\":\"Grey\",\"color\":\"R1200C\"}]", body);
@@ -47,8 +47,33 @@ class JavaAvance2ApplicationTests {
 	@Test
 	public void shouldDeleteACar() {
 		this.restTemplate.delete("/cars/1");
-		String body = restTemplate.getForObject("/cars/1", String.class);
-		assertEquals(null, body);
-	}
+		//String body = restTemplate.getForObject("/cars/1", String.class);
+		//assertEquals(null, body);
 
+	}*/
+	@Test
+	public void completeTest() {
+		//Test liste complete des vehicules
+		String body = restTemplate.getForObject("/cars", String.class);
+		assertEquals("[{\"id\":0,\"brand\":\"Bentley\",\"model\":\"Black\",\"color\":\"Continental GT\"},{\"id\":2,\"brand\":\"OldsMobile\",\"model\":\"Black\",\"color\":\"Rocket88\"},{\"id\":3,\"brand\":\"BMW\",\"model\":\"Grey\",\"color\":\"R1200C\"}]", body);
+
+		//Test ajout d'un vehicule
+		Car newcarAdd = new Car(1, "Opel", "Zafira", "caca d'oie");
+		this.restTemplate.postForObject("/cars", newcarAdd, String.class);
+		String bodyAdd = restTemplate.getForObject("/cars/1", String.class);
+		assertEquals("{\"id\":1,\"brand\":\"Opel\",\"model\":\"Zafira\",\"color\":\"caca d'oie\"}", bodyAdd);
+
+		// Test modif d'un vehicule
+		Car newcarModif = new Car(1, "Opel", "Zafira", "Rose pailleté");
+		this.restTemplate.put("/cars/4", newcarModif, String.class);
+		String bodyModif = restTemplate.getForObject("/cars/1", String.class);
+		assertEquals("{\"id\":1,\"brand\":\"Opel\",\"model\":\"Zafira\",\"color\":\"Rose pailleté\"}", bodyModif);
+
+		//Test supprimer un vehicule
+		String bodyBeforeSupp = restTemplate.getForObject("/cars", String.class);
+		assertEquals("[{\"id\":0,\"brand\":\"Bentley\",\"model\":\"Black\",\"color\":\"Continental GT\"},{\"id\":1,\"brand\":\"Opel\",\"model\":\"Zafira\",\"color\":\"Rose pailleté\"},{\"id\":2,\"brand\":\"OldsMobile\",\"model\":\"Black\",\"color\":\"Rocket88\"},{\"id\":3,\"brand\":\"BMW\",\"model\":\"Grey\",\"color\":\"R1200C\"}]", bodyBeforeSupp);
+		this.restTemplate.delete("/cars/1");
+		String bodyAfterSupp = restTemplate.getForObject("/cars", String.class);
+		assertEquals("[{\"id\":0,\"brand\":\"Bentley\",\"model\":\"Black\",\"color\":\"Continental GT\"},{\"id\":2,\"brand\":\"OldsMobile\",\"model\":\"Black\",\"color\":\"Rocket88\"},{\"id\":3,\"brand\":\"BMW\",\"model\":\"Grey\",\"color\":\"R1200C\"}]", bodyAfterSupp);
+	}
 }
