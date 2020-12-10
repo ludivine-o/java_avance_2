@@ -1,11 +1,30 @@
 package fr.ecolenum.testspring.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Car {
 
+    @Id
+    @GeneratedValue
+    private int id;
     private String brand;
     private String model;
     private String color;
-    private int id;
+
+
+    public Car(int id, String brand, String model, String color) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.color = color;
+    }
+
+    public Car() {
+
+    }
 
     @Override
     public String toString() {
@@ -17,12 +36,7 @@ public class Car {
                 '}';
     }
 
-    public Car(int id, String brand, String model, String color) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.color = color;
-    }
+
 
     public int getId() {
         return id;

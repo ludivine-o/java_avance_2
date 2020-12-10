@@ -1,12 +1,11 @@
 package fr.ecolenum.testspring.dao;
 import fr.ecolenum.testspring.model.Car;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.Map;
 
-public interface CarDao {
-    public Map<Integer,Car> findAll();
-    public Car findById(int id);
-    public void save(Car car);
-    void update(Car car, int id);
-    void delete(int id);
+@Repository
+public interface CarDao extends JpaRepository<Car,Integer> {
 
 }

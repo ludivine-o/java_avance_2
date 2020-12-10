@@ -1,13 +1,12 @@
 package fr.ecolenum.testspring.service;
 
 import fr.ecolenum.testspring.dao.CarDao;
-import fr.ecolenum.testspring.dao.CarDaoImpl;
 import fr.ecolenum.testspring.model.Car;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
-
+import java.util.Optional;
 
 
 @Service
@@ -26,21 +25,21 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public void updateCar(Integer id, Car car) {
-        this.cardao.update(car, id);
+        this.cardao.save(car);
     }
 
     @Override
     public void deleteCar(Integer id) {
-        this.cardao.delete(id);
+        this.cardao.deleteById(id);
     }
 
     @Override
-    public Map<Integer, Car> getCars() {
+    public List<Car> getCars() {
         return this.cardao.findAll();
     }
 
     @Override
-    public Car findById(Integer id) {
+    public Optional<Car> findById(Integer id) {
         return this.cardao.findById(id);
     }
 }

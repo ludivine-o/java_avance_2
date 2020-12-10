@@ -3,10 +3,7 @@ package fr.ecolenum.testspring.controller;
 import fr.ecolenum.testspring.dao.CarDao;
 import fr.ecolenum.testspring.model.Car;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 import fr.ecolenum.testspring.service.CarService;
@@ -36,14 +33,14 @@ public class MainController {
     //Récupérer la liste
     @GetMapping(value = "/cars")
     @ResponseBody
-    public Map<Integer, Car> getCars() {
+    public List<Car> getCars() {
        return this.carservice.getCars();
     }
 
     //Récupérer un produit par son Id
     @GetMapping(value="/cars/{id}")
     @ResponseBody
-    public Car getCar(@PathVariable("id") int id) {
+    public Optional<Car> getCar(@PathVariable("id") int id) {
         return this.carservice.findById(id);
     }
 
