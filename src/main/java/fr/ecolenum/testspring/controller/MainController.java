@@ -1,22 +1,13 @@
 package fr.ecolenum.testspring.controller;
 
-import fr.ecolenum.testspring.dao.CarDao;
 import fr.ecolenum.testspring.model.Car;
 
 import java.util.*;
 
 
 import fr.ecolenum.testspring.service.CarService;
-import fr.ecolenum.testspring.service.CarServiceImpl;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 
 
 @RestController
